@@ -17,13 +17,13 @@ const TutorMap = ({ tutors, selectedLocation }) => {
   useEffect(() => {
     const initMap = async () => {
       const loader = new Loader({
-        apiKey: 'AIzaSyDbd6kAuBELY2jEvuZLWBCpwnIvXTiFx_M    ', // You'll need to replace this
+        apiKey: process.env.REACT_APP_API_KEY, // Use environment variable for API key
         version: 'weekly',
         libraries: ['places']
       });
 
       try {
-        const google = await loader.load();
+        window.google = await loader.load();
         
         const defaultCenter = { lat: 39.8283, lng: -98.5795 }; // Center of USA
         
